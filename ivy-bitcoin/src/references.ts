@@ -100,7 +100,7 @@ export function referenceCheck(contract: RawContract): RawContract {
               throw new NameError(
                 "Value " +
                   parameter.name +
-                  " cannot be used more that once in clause " +
+                  " cannot be used more than once in clause " +
                   clauseName
               )
             }
