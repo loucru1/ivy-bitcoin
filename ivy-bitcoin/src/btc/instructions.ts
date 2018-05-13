@@ -52,7 +52,6 @@ export type FunctionName =
   | "bytes"
   | "int2bytes"
   | "bytes2int"
-  | "boolean"
   | "size"
 
 export type Opcode = string // for now
@@ -141,8 +140,6 @@ export function getOpcodes(instruction: Instruction): Opcode[] {
       return ["OVER", "SPLIT", "SWAP", "DROP", "ROT", "SUB", "SPLIT", "DROP"]
     case "bytes":
       return []
-    case "boolean":
-      return []
     case "int2bytes":
       return ["NUM2BIN"]
     case "bytes2int":
@@ -208,8 +205,6 @@ export function getTypeSignature(instruction: Instruction): TypeSignature {
       return createTypeSignature(["Integer", "Integer"], "Bytes")
     case "bytes2int":
       return createTypeSignature(["Bytes"], "Integer")
-    case "boolean":
-      throw new Error("should not call getTypeSignature on boolean function")
     case "==":
     case "!=":
       throw new Error("should not call getTypeSignature on " + instruction)
